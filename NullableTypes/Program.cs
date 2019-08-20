@@ -11,11 +11,12 @@ namespace NullableTypes
         static void Main(string[] args)
         {
             // Compiler errors! Value types cannot be set to null!
-            bool myBool = null;
-            int myInt = null;
+            //bool myBool = null;
+            //int myInt = null;
 
             // OK! Strings are reference types.
             string myString = null;
+            Console.ReadLine();
         }
 
         static void LocalNullableVariables()
@@ -28,7 +29,17 @@ namespace NullableTypes
             int?[] arrayOfNullableInts = new int?[10];
 
             // Error! Strings are reference types!
-            string? s = "oops";
+            //string? s = "oops";
+        }
+
+        static void LocalNullableVariablesUsingNullable()
+        {
+            // Define some local nullable types using Nullable<T>.
+            Nullable<int> nullableInt = 10;
+            Nullable<double> nullableDouble = 3.14;
+            Nullable<bool> nullableBool = null;
+            Nullable<char> nullableChar = 'a';
+            Nullable<int>[] arrayOfNullableInts = new Nullable<int>[0];
         }
     }
 }
