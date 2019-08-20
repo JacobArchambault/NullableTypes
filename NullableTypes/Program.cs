@@ -25,6 +25,15 @@ namespace NullableTypes
                 Console.WriteLine("Value of 'b' is {0}", b.Value);
             else
                 Console.WriteLine("Value of 'b' is undefined");
+
+            // If the value from GetIntFromDatabase() is null, assign local variable to 100.
+            int myData = dr.GetIntFromDatabase() ?? 100;
+            Console.WriteLine("Value of myData: {0}", myData);
+
+            int? moreData = dr.GetIntFromDatabase();
+            if (!moreData.HasValue)
+                moreData = 100;
+            Console.WriteLine("Value of moreData: {0}", moreData);
             Console.ReadLine();
         }
 
