@@ -16,13 +16,14 @@ namespace NullableTypes
             // Get int from "database".
             int? i = dr.GetIntFromDatabase();
             if (i.HasValue)
-                Console.WriteLine("Value if 'i' is {0}", i.Value);
+                Console.WriteLine("Value if 'i' is: {0}", i.Value);
             else
                 Console.WriteLine("Value of 'i' is undefined.");
+
             // Get bool from "database".
             bool? b = dr.GetBoolFromDatabase();
             if (b != null)
-                Console.WriteLine("Value of 'b' is {0}", b.Value);
+                Console.WriteLine("Value of 'b' is: {0}", b.Value);
             else
                 Console.WriteLine("Value of 'b' is undefined");
 
@@ -30,10 +31,14 @@ namespace NullableTypes
             int myData = dr.GetIntFromDatabase() ?? 100;
             Console.WriteLine("Value of myData: {0}", myData);
 
+            // Long hand version using ? : ?? syntax
             int? moreData = dr.GetIntFromDatabase();
             if (!moreData.HasValue)
                 moreData = 100;
             Console.WriteLine("Value of moreData: {0}", moreData);
+
+            TesterMethod(null);
+
             Console.ReadLine();
         }
 
@@ -58,6 +63,12 @@ namespace NullableTypes
             Nullable<bool> nullableBool = null;
             Nullable<char> nullableChar = 'a';
             Nullable<int>[] arrayOfNullableInts = new Nullable<int>[0];
+        }
+
+        static void TesterMethod(string[] args)
+        {
+            // We should check for null before accessing the array data!
+            Console.WriteLine($"You sent me {args?.Length ?? 0} arguments.");
         }
     }
 }
