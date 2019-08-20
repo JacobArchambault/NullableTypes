@@ -10,12 +10,21 @@ namespace NullableTypes
     {
         static void Main(string[] args)
         {
-            // Compiler errors! Value types cannot be set to null!
-            //bool myBool = null;
-            //int myInt = null;
+            Console.WriteLine("***** Fun with Nullable Data *****\n");
+            DatabaseReader dr = new DatabaseReader();
 
-            // OK! Strings are reference types.
-            string myString = null;
+            // Get int from "database".
+            int? i = dr.GetIntFromDatabase();
+            if (i.HasValue)
+                Console.WriteLine("Value if 'i' is {0}", i.Value);
+            else
+                Console.WriteLine("Value of 'i' is undefined.");
+            // Get bool from "database".
+            bool? b = dr.GetBoolFromDatabase();
+            if (b != null)
+                Console.WriteLine("Value of 'b' is {0}", b.Value);
+            else
+                Console.WriteLine("Value of 'b' is undefined");
             Console.ReadLine();
         }
 
